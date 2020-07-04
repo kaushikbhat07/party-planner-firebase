@@ -18,6 +18,13 @@ const initialState = {
 }
 
 const projectReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case 'CREATE_PROJECT':
+            console.log('Created Project' + action.project);
+            break;
+        default:
+            console.log("default");
+    }
     return state;
 }
 

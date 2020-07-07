@@ -25,3 +25,23 @@ export const createProject = (project) => {
 			})
 	}
 }
+
+export const deleteProject = (projectId) => {
+	
+	return (dispatch, getState, { getFirebase, getFirestore }) => {
+		// aysnc
+		const firestore = getFirestore();
+		firestore.collection('projects').doc(projectId).delete()
+		.then(() => {
+			dispatch({
+				type: 'DELETE_PROJECT'
+			})
+		})
+		.catch((err) => {
+			dispatch({
+				type: 'DELETE_PROJECT_ERROR',
+				err
+			})
+		})
+	}
+}

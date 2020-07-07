@@ -39,8 +39,12 @@ export const signUp = (newUser) => {
 			newUser.password
 		)
 		.then(() => {
-			// return (
-				firestore.collection('users').doc(firebase.auth().currentUser.uid).set({
+			var user = firebase.auth().currentUser;
+			user.updateProfile({
+				displayName: newUser.firstName + " " + newUser.lastName
+			})
+			.then(() => {
+				return firestore.collection('users').doc(firebase.auth().currentUser.uid).set({
 					firstName: newUser.firstName,
 					lastName: newUser.lastName,
 					initials: newUser.firstName[0] + newUser.lastName[0]
@@ -48,7 +52,7 @@ export const signUp = (newUser) => {
 				.catch(err => {
 					console.log("doc write error " + err)
 				})
-			// );
+			})
 		})
 		.then(() => {
 			console.log("Signup success");

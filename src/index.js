@@ -11,6 +11,7 @@ import { reduxFirestore, getFirestore, createFirestoreInstance } from 'redux-fir
 import { ReactReduxFirebaseProvider, getFirebase, isLoaded } from 'react-redux-firebase'
 import fbConfig from './config/fbConfig';
 import firebase from "firebase/app";
+import 'font-awesome/css/font-awesome.css'
 
 const store = createStore(
 	rootReducer,

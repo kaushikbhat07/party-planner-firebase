@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "party-planner",
     "public": "build",
     "ignore": [
       "firebase.json",

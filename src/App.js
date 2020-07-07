@@ -6,6 +6,7 @@ import ProjectDetails from './components/projects/ProjectDetails';
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CreateProject from './components/projects/CreateProject'
+import UpdateProject from './components/projects/UpdateProject'
 
 function App() {
 	if (window.screen.width > 600) {
@@ -17,6 +18,7 @@ function App() {
 						<Switch>
 							<Route exact path='/' component={Dashboard} />
 							<Route path='/project/:id' component={ProjectDetails} />
+							<Route path='/update/:id' component={UpdateProject} />							
 							<Route path='/signin' component={SignIn} />
 							<Route path='/signup' component={SignUp} />
 							<Route path='/create' component={CreateProject} />
@@ -29,7 +31,7 @@ function App() {
 	} else {
 		return (
 			<div className="container center">
-				This app is not mobile optimized. Please open with a bigger screen device.
+				This app is not mobile optimized. Please open with a larger screen device.
 			</div>
 		);
 	}

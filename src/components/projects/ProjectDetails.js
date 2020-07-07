@@ -36,7 +36,7 @@ const ProjectDetails = (props) => {
 	} else {
 		return (
 			<div className="container center">
-				<p>Loading project...</p>
+				<p>Loading post...</p>
 			</div>
 		);
 	}

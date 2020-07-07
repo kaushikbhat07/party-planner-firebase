@@ -17,7 +17,6 @@ class ProjectSummary extends Component {
 	handleDeleteClick = (e) => {
 		e.target.className += ' disabled';
 		const { project } = this.props;
-		console.log("Clicked " + project.id);
 		this.props.deleteProject(project.id);
 	}
 
@@ -25,15 +24,16 @@ class ProjectSummary extends Component {
 		const { project, auth } = this.props;
 
 		const canEdit = () => {
-			if(auth.uid == project.authorId) {
+			if (auth.uid === project.authorId) {
 				return (
-					<button class="btn-floating btn-large waves-effect waves-light green"><i class="fa fa-pencil"></i></button>
+					<Link to={'update/' + project.id}>
+						<button class="btn-floating btn-large waves-effect waves-light green"><i class="fa fa-pencil"></i></button></Link>
 				);
 			}
 		}
 
 		const canDelete = () => {
-			if(auth.uid == project.authorId) { 
+			if (auth.uid === project.authorId) {
 				return (
 					<button class="btn-floating btn-large waves-effect waves-light red"><i class="fa fa-trash" onClick={this.handleDeleteClick}></i></button>
 				);

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect} from 'react-router-dom'
 import { signUp } from '../../store/actions/authActions'
+import $ from 'jquery';
 
 class SignUp extends Component {
 	state = {
@@ -17,8 +18,8 @@ class SignUp extends Component {
 	}
 	handleSubmit = (e) => {
 		e.preventDefault();
-		// console.log(this.state);
-		this.props.signUp(this.state)
+		$('#signupbtn').addClass("disabled");
+		this.props.signUp(this.state);
 	}
 	render() {
 		const { auth, authError } = this.props;
@@ -37,14 +38,14 @@ class SignUp extends Component {
 					</div>
 					<div className="input-field">
 						<label htmlFor="firstName">First Name</label>
-						<input type="text" id="firstName" onChange={this.handleChange} />
+						<input type="text" id="firstName" pattern="^[a-zA-Z]*$" onChange={this.handleChange} required />
 					</div>
 					<div className="input-field">
 						<label htmlFor="lastName">Last Name</label>
 						<input type="text" id="lastName" onChange={this.handleChange} />
 					</div>
 					<div className="input-field">
-						<button className="btn pink lighten-1 z-depth-0">
+						<button className="btn pink lighten-1 z-depth-0" id="signupbtn">
 							Sign up
 						</button>
 						<div className="red-text center">

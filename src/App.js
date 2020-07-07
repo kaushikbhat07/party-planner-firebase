@@ -8,23 +8,32 @@ import SignUp from './components/auth/SignUp'
 import CreateProject from './components/projects/CreateProject'
 
 function App() {
-	return (
-		<BrowserRouter>
-			<div className="App">
-				<header className="App-header">
-					<Navbar/>
-					<Switch>
-						<Route exact path='/' component={Dashboard} />
-						<Route path='/project/:id' component={ProjectDetails} />
-						<Route path='/signin' component={SignIn} />
-						<Route path='/signup' component={SignUp} />
-						<Route path='/create' component={CreateProject} />
-						<Redirect to='/' />
-					</Switch>
-				</header>
+	if (window.screen.width > 600) {
+		return (
+			<BrowserRouter>
+				<div className="App">
+					<header className="App-header">
+						<Navbar />
+						<Switch>
+							<Route exact path='/' component={Dashboard} />
+							<Route path='/project/:id' component={ProjectDetails} />
+							<Route path='/signin' component={SignIn} />
+							<Route path='/signup' component={SignUp} />
+							<Route path='/create' component={CreateProject} />
+							<Redirect to='/' />
+						</Switch>
+					</header>
+				</div>
+			</BrowserRouter>
+		);
+	} else {
+		return (
+			<div className="container center">
+				This app is not mobile optimized. Please open with a bigger screen device.
 			</div>
-		</BrowserRouter>
-	);
+		);
+	}
+
 }
 
 export default App;
